@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks Result</title>
+</head>
+<body>
+
+    <h1>Student Marks Entry</h1>
+
+    <form method="POST">
+        <input type="number" name="tamil" placeholder="Tamil" required><br><br>
+        <input type="number" name="english" placeholder="English" required><br><br>
+        <input type="number" name="maths" placeholder="Maths" required><br><br>
+        <input type="number" name="science" placeholder="Science" required><br><br>
+        <input type="number" name="social" placeholder="Social" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if result and result.total %}
+        <hr>
+        <h2>Result</h2>
+
+        <p>Tamil : {{ result.Tamil }}</p>
+        <p>English : {{ result.English }}</p>
+        <p>Maths : {{ result.Maths }}</p>
+        <p>Science : {{ result.Science }}</p>
+        <p>Social : {{ result.Social }}</p>
+
+        <p><b>Total :</b> {{ result.total }}</p>
+        <p><b>Percentage :</b> {{ result.percentage }}%</p>
+        <p><b>Overall :</b> {{ result.overall }}</p>
+        <p><b>Grade :</b> {{ result.grade }}</p>
+
+        {% if result.motivation %}
+            <h3>Motivation</h3>
+            {% for line in result.motivation %}
+                <p>{{ line }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>
