@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks & Code Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 80%;
+        }
+
+        input, button {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            background: #ff9800;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff5722;
+        }
+
+        #symbolOutput {
+            font-size: 28px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Marks Portal</h1>
+
+<!-- SECTION 1 -->
+<div class="section">
+    <h2>Result Calculator</h2>
+
+    <form method="POST">
+        <input type="number" name="tamil" placeholder="Tamil" required>
+        <input type="number" name="english" placeholder="English" required>
+        <input type="number" name="maths" placeholder="Maths" required>
+        <input type="number" name="science" placeholder="Science" required>
+        <input type="number" name="social" placeholder="Social" required>
+        <br>
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result.total %}
+        <h3>Total: {{ result.total }}</h3>
+        <h3>Percentage: {{ result.percentage }}%</h3>
+        <h3>Overall: {{ result.overall }}</h3>
+        <h3>Grade: {{ result.grade }}</h3>
+    {% endif %}
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+    <h2>Secret Code → Symbols</h2>
+
+    <input type="text" id="codeInput" placeholder="Enter Code Word">
+    <div id="symbolOutput"></div>
+</div>
+
+<script>
+document.getElementById("codeInput").addEventListener("input", function() {
+    let value = this.value.toLowerCase();
+    let output = "";
+
+    if(value === "king") {
+        output = "👑 ⚡ 🔥";
+    }
+    else if(value === "love") {
+        output = "💖 🌸 ✨";
+    }
+    else if(value === "mass") {
+        output = "🔥 😎 💪";
+    }
+    else if(value === "mama") {
+        output = "🦁 👑 🚀";
+    }
+    else {
+        output = "";
+    }
+
+    document.getElementById("symbolOutput").innerHTML = output;
+});
+</script>
+
+</body>
+</html>
